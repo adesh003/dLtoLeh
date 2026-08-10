@@ -8,8 +8,8 @@ import BackgroundSelectorModal from './components/BackgroundSelectorModal';
 import YouTubeAudioPlayer from './components/YouTubeAudioPlayer';
 import { Eye, EyeOff } from 'lucide-react';
 
-// Sequential order of background asset IDs: 1, 2, 3, 4, 5, 6, 7, 8, 10
-const BG_SEQUENCE = [1, 2, 3, 4, 5, 6, 7, 8, 10];
+// Sequential order of background asset IDs: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+const BG_SEQUENCE = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 function App() {
   // Live Track Metadata received dynamically from YouTube Player
