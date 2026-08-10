@@ -38,28 +38,37 @@
 :root {
   --font-sans: 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-devanagari: 'Noto Serif Devanagari', 'Rozha One', 'Teko', serif;
+  --sat: env(safe-area-inset-top, 0px);
+  --sab: env(safe-area-inset-bottom, 0px);
+  --sal: env(safe-area-inset-left, 0px);
+  --sar: env(safe-area-inset-right, 0px);
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
 }
 
 html, body {
   width: 100%;
   height: 100%;
+  height: 100dvh;
   overflow: hidden;
   font-family: var(--font-sans);
   background-color: #000000;
   color: #ffffff;
   -webkit-font-smoothing: antialiased;
   user-select: none;
+  touch-action: manipulation;
+  overscroll-behavior: none;
 }
 
 #root {
   width: 100%;
   height: 100%;
+  height: 100dvh;
   position: relative;
   overflow: hidden;
   background: #000;
@@ -73,66 +82,96 @@ html, body {
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 9999px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.3);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   color: #ffffff;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 6px 14px;
+  gap: 6px;
+  padding: 6px 12px;
   font-size: 13px;
   font-weight: 500;
   text-decoration: none;
   cursor: pointer;
   position: relative;
   overflow: hidden;
+  flex-shrink: 0;
+}
+
+.liquid-glass-pill:active {
+  transform: scale(0.96);
 }
 
 .liquid-glass-pill:hover {
   background: rgba(255, 255, 255, 0.22);
   border-color: rgba(255, 255, 255, 0.4);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 1px 2px rgba(255, 255, 255, 0.4);
-  transform: translateY(-1px);
 }
 
 .liquid-glass-pill-sm {
-  padding: 4px 10px;
-  font-size: 12px;
-  gap: 6px;
+  padding: 4px 8px;
+  font-size: 11px;
+  gap: 4px;
+}
+
+@media (min-width: 640px) {
+  .liquid-glass-pill-sm {
+    padding: 5px 11px;
+    font-size: 12px;
+    gap: 6px;
+  }
 }
 
 .liquid-glass-card {
-  background: rgba(16, 16, 22, 0.72);
+  background: rgba(16, 16, 22, 0.78);
   backdrop-filter: blur(28px) saturate(200%);
   -webkit-backdrop-filter: blur(28px) saturate(200%);
   border: 1px solid rgba(255, 255, 255, 0.18);
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), inset 0 1px 2px rgba(255, 255, 255, 0.25);
-  border-radius: 28px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.75), inset 0 1px 2px rgba(255, 255, 255, 0.25);
+  border-radius: 24px;
+}
+
+@media (min-width: 640px) {
+  .liquid-glass-card {
+    border-radius: 28px;
+  }
 }
 
 .player-bar-container {
-  background: rgba(18, 16, 22, 0.7);
+  background: rgba(18, 16, 22, 0.75);
   backdrop-filter: blur(32px) saturate(210%);
   -webkit-backdrop-filter: blur(32px) saturate(210%);
   border: 1px solid rgba(255, 255, 255, 0.22);
-  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.75), 0 0 30px rgba(255, 255, 255, 0.08), inset 0 1.5px 2px rgba(255, 255, 255, 0.3);
-  border-radius: 100px;
-  padding: 10px 24px 10px 14px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 30px rgba(255, 255, 255, 0.06), inset 0 1.5px 2px rgba(255, 255, 255, 0.3);
+  border-radius: 28px;
+  padding: 10px 14px;
   display: flex;
-  align-items: center;
-  gap: 20px;
+  flex-direction: column;
+  gap: 8px;
   max-width: 680px;
-  width: calc(100% - 32px);
+  width: calc(100% - 24px);
   position: absolute;
-  bottom: 24px;
+  bottom: calc(14px + var(--sab));
   left: 50%;
   transform: translateX(-50%);
   z-index: 40;
   transition: all 0.3s ease;
 }
 
+@media (min-width: 640px) {
+  .player-bar-container {
+    flex-direction: row;
+    align-items: center;
+    border-radius: 100px;
+    padding: 10px 22px 10px 14px;
+    gap: 18px;
+    width: calc(100% - 32px);
+    bottom: calc(24px + var(--sab));
+  }
+}
+
 .play-btn-circle {
-  width: 44px;
-  height: 44px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
   background: #ffffff;
   color: #111115;
@@ -146,10 +185,21 @@ html, body {
   flex-shrink: 0;
 }
 
+.play-btn-circle:active {
+  transform: scale(0.92);
+}
+
 .play-btn-circle:hover {
-  transform: scale(1.08);
+  transform: scale(1.06);
   box-shadow: 0 6px 24px rgba(255, 255, 255, 0.6);
   background: #f5f5fa;
+}
+
+@media (min-width: 640px) {
+  .play-btn-circle {
+    width: 44px;
+    height: 44px;
+  }
 }
 
 .devanagari-title {
@@ -157,22 +207,35 @@ html, body {
   text-align: center;
   color: #ffffff;
   text-shadow: 0 10px 40px rgba(0, 0, 0, 0.9), 0 0 80px rgba(200, 30, 30, 0.4);
-  letter-spacing: 2px;
-  line-height: 1.1;
+  letter-spacing: 1px;
+  line-height: 1.05;
   pointer-events: none;
+}
+
+@media (min-width: 640px) {
+  .devanagari-title {
+    letter-spacing: 2px;
+    line-height: 1.1;
+  }
 }
 
 .glass-modal-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.75);
+  background: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   z-index: 100;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  padding: 12px;
+}
+
+@media (min-width: 640px) {
+  .glass-modal-backdrop {
+    padding: 20px;
+  }
 }
 
 .glass-input {
@@ -194,7 +257,7 @@ html, body {
 }
 
 .custom-scrollbar::-webkit-scrollbar {
-  width: 5px;
+  width: 4px;
 }
 .custom-scrollbar::-webkit-scrollbar-track {
   background: rgba(255, 255, 255, 0.03);

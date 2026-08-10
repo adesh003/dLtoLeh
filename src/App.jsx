@@ -120,7 +120,7 @@ function App() {
   };
 
   return (
-    <div className="relative w-full h-screen overflow-hidden select-none bg-black cursor-default">
+    <div className="relative w-full h-[100dvh] overflow-hidden select-none bg-black cursor-default">
       {/* Vercel Analytics */}
       <Analytics />
 
@@ -172,14 +172,14 @@ function App() {
         onVolumeChange={(newVol) => setVolume(newVol)}
       />
 
-      {/* Text Overlay Toggle Button (Bottom Left) */}
+      {/* Text Overlay Toggle Button (Above player on mobile, bottom-left on desktop) */}
       <button
         onClick={() => setShowOverlayText(!showOverlayText)}
-        className="liquid-glass-pill liquid-glass-pill-sm absolute bottom-6 left-6 z-30 opacity-70 hover:opacity-100"
+        className="liquid-glass-pill liquid-glass-pill-sm absolute bottom-[calc(132px+var(--sab))] sm:bottom-6 left-3 sm:left-6 z-30 opacity-75 hover:opacity-100 active:scale-95 shadow-lg transition-all"
         title="Toggle Title Text Overlay"
       >
         {showOverlayText ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
-        <span className="text-[11px] font-medium hidden sm:inline">
+        <span className="text-[10px] sm:text-[11px] font-medium hidden xs:inline">
           {showOverlayText ? 'Hide Title' : 'Show Title'}
         </span>
       </button>
