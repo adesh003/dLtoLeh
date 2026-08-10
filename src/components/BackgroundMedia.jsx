@@ -1,16 +1,16 @@
 import React, { useState, useEffect, useRef } from 'react';
 
 export const ASSETS = [
-  { id: 1, type: 'image', src: '/asset2/1.png', title: 'Mountain Pass Panorama', theme: '#151324' },
-  { id: 2, type: 'image', src: '/asset2/2.png', title: 'Himalayan Golden Glow', theme: '#24140e' },
-  { id: 3, type: 'image', src: '/asset2/3.png', title: 'Ladakh Valley Twilight', theme: '#0d1829' },
-  { id: 4, type: 'image', src: '/asset2/4.png', title: 'Desi Saloon Retro Art', theme: '#171021' },
-  { id: 5, type: 'image', src: '/asset2/5.png', title: 'Monastery Horizon', theme: '#102126' },
-  { id: 6, type: 'image', src: '/asset2/6.png', title: 'Deluxe Saloon Art', theme: '#1c1514' },
-  { id: 7, type: 'image', src: '/asset2/7.png', title: 'Retro Street Illustration', theme: '#211812' },
-  { id: 8, type: 'image', src: '/asset2/8.png', title: 'Desi Nostalgia View', theme: '#171922' },
-  { id: 9, type: 'image', src: '/asset2/9.png', title: 'Highway Solitude', theme: '#1f1520' },
-  { id: 10, type: 'image', src: '/asset2/10.jfif', title: 'Sunset Saloon Chill', theme: '#28130e' },
+  { id: 1, type: 'image', src: '/asset2/1.webp', title: 'Mountain Pass Panorama', theme: '#151324' },
+  { id: 2, type: 'image', src: '/asset2/2.webp', title: 'Himalayan Golden Glow', theme: '#24140e' },
+  { id: 3, type: 'image', src: '/asset2/3.webp', title: 'Ladakh Valley Twilight', theme: '#0d1829' },
+  { id: 4, type: 'image', src: '/asset2/4.webp', title: 'Desi Saloon Retro Art', theme: '#171021' },
+  { id: 5, type: 'image', src: '/asset2/5.webp', title: 'Monastery Horizon', theme: '#102126' },
+  { id: 6, type: 'image', src: '/asset2/6.webp', title: 'Deluxe Saloon Art', theme: '#1c1514' },
+  { id: 7, type: 'image', src: '/asset2/7.webp', title: 'Retro Street Illustration', theme: '#211812' },
+  { id: 8, type: 'image', src: '/asset2/8.webp', title: 'Desi Nostalgia View', theme: '#171922' },
+  { id: 9, type: 'image', src: '/asset2/9.webp', title: 'Highway Solitude', theme: '#1f1520' },
+  { id: 10, type: 'image', src: '/asset2/10.webp', title: 'Sunset Saloon Chill', theme: '#28130e' },
 ];
 
 export const BackgroundMedia = ({ bgId }) => {
@@ -37,7 +37,7 @@ export const BackgroundMedia = ({ bgId }) => {
     const timer = setTimeout(() => {
       setIsTransitioning(false);
       setPreviousAsset(null);
-    }, 600);
+    }, 500);
     return () => clearTimeout(timer);
   };
 
@@ -71,6 +71,7 @@ export const BackgroundMedia = ({ bgId }) => {
         alt={asset.title}
         decoding="async"
         loading="eager"
+        fetchPriority={isIncoming ? "high" : "auto"}
         onLoad={isIncoming ? handleActiveLoaded : undefined}
         className="w-full h-full object-cover will-change-[opacity,transform] scale-[1.01]"
       />
@@ -84,14 +85,14 @@ export const BackgroundMedia = ({ bgId }) => {
     >
       {/* Underlying Previous Asset (during crossfade) */}
       {previousAsset && isTransitioning && (
-        <div className="absolute inset-0 w-full h-full z-0 opacity-100 transition-opacity duration-600">
+        <div className="absolute inset-0 w-full h-full z-0 opacity-100 transition-opacity duration-500">
           {renderMediaElement(previousAsset, false, prevVideoRef)}
         </div>
       )}
 
       {/* Foreground Active Asset */}
       <div
-        className={`absolute inset-0 w-full h-full z-10 transition-opacity duration-600 ease-out ${
+        className={`absolute inset-0 w-full h-full z-10 transition-opacity duration-500 ease-out ${
           isTransitioning ? 'opacity-95' : 'opacity-95'
         }`}
       >
