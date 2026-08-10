@@ -3,29 +3,23 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="theme-color" content="#000000" />
     <meta name="description" content="दिल्ली से लद्दाख - Minimal Liquid Glass Music Player with YouTube Playlist and Highway Lo-Fi Vibe" />
     <title>दिल्ली से लद्दाख | Minimal Music Player</title>
-    <!-- Tailwind CSS Script -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: {
-              sans: ['Outfit', 'Inter', 'sans-serif'],
-              devanagari: ['Noto Serif Devanagari', 'Rozha One', 'serif'],
-            }
-          }
-        }
-      }
-    </script>
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Serif+Devanagari:wght@600;700;800;900&family=Outfit:wght@300;400;500;600;700&family=Rozha+One&family=Teko:wght@600;700&display=swap" rel="stylesheet">
+    
+    <!-- DNS Prefetch and Preconnects for YouTube & Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://www.youtube.com" />
+    <link rel="preconnect" href="https://www.youtube-nocookie.com" />
+    <link rel="preconnect" href="https://img.youtube.com" />
+    <link rel="dns-prefetch" href="https://i.ytimg.com" />
+
+    <!-- Google Fonts with font-display swap -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Serif+Devanagari:wght@600;700;800;900&family=Outfit:wght@300;400;500;600;700&family=Rozha+One&family=Teko:wght@600;700&display=swap" rel="stylesheet" />
   </head>
-  <body>
+  <body class="bg-black overflow-hidden select-none">
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

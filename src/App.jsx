@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import Header from './components/Header';
 import BackgroundMedia from './components/BackgroundMedia';
 import HindiOverlay from './components/HindiOverlay';
@@ -120,6 +121,9 @@ function App() {
 
   return (
     <div className="relative w-full h-screen overflow-hidden select-none bg-black cursor-default">
+      {/* Vercel Analytics */}
+      <Analytics />
+
       {/* Background Media Engine */}
       <BackgroundMedia bgId={activeBgId} />
 

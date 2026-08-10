@@ -26,7 +26,7 @@ export const Header = ({ onOpenBgSelector, activeBgId }) => {
     return () => clearInterval(interval);
   }, []);
 
-  // Track Total Visits & Real-Time Active Users
+  // Track Total Visits & Real - Time Active Users
   useEffect(() => {
     // 1. Total Visitor Count tracking
     try {
@@ -54,7 +54,7 @@ export const Header = ({ onOpenBgSelector, activeBgId }) => {
       try {
         const stored = localStorage.getItem('deluxe_live_tabs');
         if (stored) activeTabs = JSON.parse(stored);
-      } catch (e) {}
+      } catch (e) { }
 
       // Clean inactive tabs older than 4 seconds
       Object.keys(activeTabs).forEach(id => {
@@ -67,7 +67,7 @@ export const Header = ({ onOpenBgSelector, activeBgId }) => {
 
       try {
         localStorage.setItem('deluxe_live_tabs', JSON.stringify(activeTabs));
-      } catch (e) {}
+      } catch (e) { }
 
       if (channel) {
         channel.postMessage({ type: 'HEARTBEAT', count: currentActiveCount });
@@ -82,7 +82,7 @@ export const Header = ({ onOpenBgSelector, activeBgId }) => {
         try {
           const activeTabs = JSON.parse(e.newValue || '{}');
           setActiveOnlineUsers(Object.keys(activeTabs).length);
-        } catch (err) {}
+        } catch (err) { }
       }
     };
 
@@ -108,7 +108,7 @@ export const Header = ({ onOpenBgSelector, activeBgId }) => {
           delete activeTabs[tabId];
           localStorage.setItem('deluxe_live_tabs', JSON.stringify(activeTabs));
         }
-      } catch (e) {}
+      } catch (e) { }
     };
   }, []);
 
